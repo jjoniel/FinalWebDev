@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS cookies;
+
+CREATE TABLE cookies (id VARCHAR(14), count BIGINT, cps BIGINT, goal BIGINT, PRIMARY KEY(id));

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cookie Clicker</title>
+        <link href="./style.css" rel="stylesheet">
+        <link rel="icon" href="img/logo.png">
+    </head>
+    <body id="celebrate">
+        <table>
+            <tr>
+                {{#if login}}
+                <td class="rapid">UNLIMITED PLAYS</td>
+                <td><a href="./">Cookie Clicker</a></td>
+                <td><a href="./cookie/logout">Logout</a></td>
+                {{else}}
+                <td>PLAYS LEFT: {{plays}}</td>
+                <td><a href="./">Cookie Clicker</a></td>
+                <td><a href="./cookie/login?intent=true" class="login">Login</a></td>
+                {{/if}}
+                
+            </tr>
+        </table>
+        <table class="transparent">
+            <tr>
+                <td class="transparent">
+                    <table class="store">
+                        <tr><td class="store" id="storehead"><h4>STORE</h4></td></tr>
+                        <tr><td class="store"><button id="clicker" class="item" onclick="clicker()" title="+0.1 CPS">Clicker</button></td></tr>
+                        <tr><td class="store"><button id="baker" class="item" onclick="baker()" title="+1 CPS">Baker</button></td></tr>
+                        <tr><td class="store"><button id="machine" class="item" onclick="machine()" title="+5 CPS">Machine</button></td></tr>
+                        <tr><td class="store"><button id="factory" class="item" onclick="factory()" title="+100 CPS">Factory</button></td></tr>
+                        <tr><td class="store"><button id="colony" class="item" onclick="colony()" title="+100000 CPS">Colony</button></td></tr>
+                        <tr><td class="store"><button id="empire" class="item" onclick="empire()" title="+10000000 CPS">Empire</button></td></tr>
+                    </table>
+                </td>
+                <td class="transparent"><div style="height:450px; width:450px"><input id="cookie" type="image" src="img/cookie.png" onclick="increment_and_update()"/></div></td>
+                <td class="transparent">
+                    <table class="store">
+                        <tr><td class="store"><h4>GOAL</h4></td></tr>
+                        <tr><td class="store"><span id="goal">&nbsp</span></td></tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <p id="id_display" style="font-weight:bold">&nbsp</p>
+        <span id="cps_display" style="color: black">&nbsp</span><span> CPS</span><br>
+        <button onclick="reset()">Restart</button>
+        <script type="text/javascript" src="js/set_cookie.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        function save() {
+            var ajax_params = {
+                'url'     : "https://user.tjhsst.edu/2022jjerome/cookie/save",
+                'type'    : "get",
+                'success' : saved    // the name of the callback function to call
+            }
+            
+            // run AJAX function 
+            $.ajax( ajax_params );
+        }
+        function saved(responseObject) {
+            console.log(responseObject);
+        }
+        setInterval(save, 100);
+        </script>
+    </body> 
+</html>

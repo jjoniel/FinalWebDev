@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vote!</title>
+        <link href="./style.css" rel="stylesheet">
+        <link rel="icon" href="img/logo.png">
+    </head>
+
+    <body style="overflow: hidden" class="example">
+        <h6><a href="./">Click a color to vote!</a></h6>
+        <br><br>
+        <table>
+            <tr>
+                <th class="vote"><a onclick="fetch1();" class="label" style='color:red' href='javascript:void(0);'>Red</button></th>
+                <th class="vote"><a onclick="fetch2();" class="label" style='color:green' href='javascript:void(0);'>Green</a></th>
+                <th class="vote"><a onclick="fetch3();" class="label" style='color:blue' href='javascript:void(0);'>Blue</a></th>
+            </tr>
+            <tr>
+                <td class="vote" id="response1">{{votes1}}</td>
+                <td class="vote" id="response2">{{votes2}}</td>
+                <td class="vote" id="response3">{{votes3}}</td>
+            </tr>
+            <tr>
+                <th class="vote"><a onclick="fetch4();" class="label" style='color:cyan' href='javascript:void(0);'>Cyan</a></th>
+                <th class="vote"><a onclick="fetch5();" class="label" style='color:magenta' href='javascript:void(0);'>Magenta</a></th>
+                <th class="vote"><a onclick="fetch6();" class="label" style='color:yellow' href='javascript:void(0);'>Yellow</a></th>
+            </tr>
+            <tr>
+                <td class="vote" id="response4">{{votes4}}</td>
+                <td class="vote" id="response5">{{votes5}}</td>
+                <td class="vote" id="response6">{{votes6}}</td>
+            </tr>
+        </table>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        function fetch1() {
+            
+            var ajax_params = {
+                'url'     : "https://user.tjhsst.edu/2022jjerome/vote/vote1",
+                'type'    : "get",
+                'success' : onResponse1    // the name of the callback function to call
+            }
+            
+            // run AJAX function 
+            $.ajax( ajax_params )
+        }
+        function onResponse1 (responseObject) {
+            // Jquery will automatically convert text to an object if it 
+            //  recognizes that the result is JSON
+            
+            console.log(responseObject)
+            
+            document.getElementById('response1').innerHTML = responseObject;
+            
+        }
+        function fetch2() {
+            
+            var ajax_params = {
+                'url'     : "https://user.tjhsst.edu/2022jjerome/vote/vote2",
+                'type'    : "get",
+                'success' : onResponse2    // the name of the callback function to call
+            }
+            
+            // run AJAX function 
+            $.ajax( ajax_params )
+        }
+        function onResponse2 (responseObject) {
+            // Jquery will automatically convert text to an object if it 
+            //  recognizes that the result is JSON
+            
+            console.log(responseObject)
+            
+            document.getElementById('response2').innerHTML = responseObject;
+            
+        }
+        function fetch3() {
+            
+            var ajax_params = {
+                'url'     : "https://user.tjhsst.edu/2022jjerome/vote/vote3",
+                'type'    : "get",
+                'success' : onResponse3    // the name of the callback function to call
+            }
+            
+            // run AJAX function 
+            $.ajax( ajax_params )
+        }
+        function onResponse3 (responseObject) {
+            // Jquery will automatically convert text to an object if it 
+            //  recognizes that the result is JSON
+            
+            console.log(responseObject)
+            
+            document.getElementById('response3').innerHTML = responseObject;
+            
+        }
+        function fetch4() {
+            
+            var ajax_params = {
+                'url'     : "https://user.tjhsst.edu/2022jjerome/vote/vote4",
+                'type'    : "get",
+                'success' : onResponse4    // the name of the callback function to call
+            }
+            
+            // run AJAX function 
+            $.ajax( ajax_params )
+        }
+        function onResponse4 (responseObject) {
+            // Jquery will automatically convert text to an object if it 
+            //  recognizes that the result is JSON
+            
+            console.log(responseObject)
+            
+            document.getElementById('response4').innerHTML = responseObject;
+            
+        }
+        function fetch5() {
+            
+            var ajax_params = {
+                'url'     : "https://user.tjhsst.edu/2022jjerome/vote/vote5",
+                'type'    : "get",
+                'success' : onResponse5    // the name of the callback function to call
+            }
+            
+            // run AJAX function 
+            $.ajax( ajax_params )
+        }
+        function onResponse5 (responseObject) {
+            // Jquery will automatically convert text to an object if it 
+            //  recognizes that the result is JSON
+            
+            console.log(responseObject)
+            
+            document.getElementById('response5').innerHTML = responseObject;
+            
+        }
+        function fetch6() {
+            
+            var ajax_params = {
+                'url'     : "https://user.tjhsst.edu/2022jjerome/vote/vote6",
+                'type'    : "get",
+                'success' : onResponse6    // the name of the callback function to call
+            }
+            
+            // run AJAX function 
+            $.ajax( ajax_params )
+        }
+        function onResponse6 (responseObject) {
+            // Jquery will automatically convert text to an object if it 
+            //  recognizes that the result is JSON
+            
+            console.log(responseObject)
+            
+            document.getElementById('response6').innerHTML = responseObject;
+            
+        }
+        </script>
+    </body>
+    
+</html>

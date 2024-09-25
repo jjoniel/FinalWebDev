@@ -1,0 +1,561 @@
+@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@100&display=swap');
+
+* {
+    font-family: 'Trispace';
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+table {
+    margin: 0 auto;
+    background-color: black;
+    width: 100%;
+}
+
+td {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 0 0;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    padding: 10px;
+    font-weight: 10;   
+    width: 200px;
+}
+
+h6 {
+    text-transform: uppercase;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    padding: 10px 0 10px 0;
+    font-weight: 10;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.title {
+    transition: letter-spacing 2s;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    padding: 10px 0 10px 0;
+    font-weight: 10;
+    position: relative;
+    top: 0;
+    width: 400px;
+    z-index: 7;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    z-index: 9;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 10;
+    transition: letter-spacing .5s;
+}
+
+div {
+    padding: 15px;
+    font-size: 25px;
+}
+
+input {
+    font-size: 20px; 
+    margin: 10px;
+}
+
+button {
+    font-size: 20px; 
+    margin: 10px;   
+    border-radius: 10px;
+    width: 100px;
+}
+
+.points_button {
+    font-size: 25px;
+    padding: 0 15px;
+    width:auto;
+}
+
+.login {
+    color: red;
+}
+
+.login:hover {
+    letter-spacing: 0;
+}
+
+a.directory {
+    color: black;
+    font-size: 100px;
+    letter-spacing: 5px;
+    transition: letter-spacing 3s ease-out;
+}
+
+a.directory:hover {
+    animation-name: flash;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    font-weight: 10;
+    letter-spacing: 20px;
+    transition: letter-spacing 4s ease-out;
+}
+
+.bounce {
+    transition: width 1s;
+}
+
+.bounce:hover {
+    width: 700px;    
+}
+
+.rapid:hover {
+    animation-name: flash;
+    animation-duration: 1s;
+    font-weight: 10;
+}
+
+@keyframes flash {
+  0%   {color:black}
+  4%  {color:red}
+  8%  {color:orange}
+  12%  {color:yellow}
+  16%  {color:green}
+  20%  {color:cyan}
+  24%  {color:magenta}
+  28%  {color:red}
+  32%  {color:orange}
+  36%  {color:yellow}
+  40%  {color:green}
+  44%  {color:cyan}
+  48%  {color:magenta}
+  52%  {color:red}
+  56%  {color:orange}
+  60%  {color:yellow}
+  64%  {color:green}
+  68%  {color:cyan}
+  72%  {color:magenta}
+  76%  {color:red}
+  80%  {color:orange}
+  84%  {color:yellow}
+  88%  {color:green}
+  92%  {color:cyan}
+  96%  {color:magenta}
+  100% {color:black}
+}
+
+@keyframes flash2 {
+  0%   {background-color:white}
+  25%  {background-color:khaki}
+  50%  {background-color:yellow}
+  75%  {background-color:gold}
+  100% {background-color:white}
+}
+
+div.directory {
+    padding: 37vh 10px;
+    margin: 10px 10px 50px 10px;
+    overflow: visible;
+    text-transform: uppercase;
+    position: sticky;
+    top: 50px;
+    background-color: white;
+}
+
+a:hover{
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#cookie {
+    width: 400px;
+    height: 400px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 20vw;
+    transform: rotate(90deg) translateY(-100vh);
+    transform-origin: top left;
+}
+
+.outer-wrapper {
+    width: 50vh;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(-75vh);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    scroll-behavior: smooth;
+    padding: 20px;
+}
+.example {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+    background-color: black;
+    overflow-x: hidden;
+}
+.example::-webkit-scrollbar {
+    display: none;
+}
+
+.weather {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 100px;
+    padding: 10px 100px;
+    font-weight: 10;
+    height: 10vw;
+    background-color: transparent;
+    transition: color 1.5s, font-size 1.5s;
+}
+
+.vote {
+    font-size: 70px;
+    text-transform: uppercase;
+    width: 500px;
+    padding: 30px;
+}
+
+.label {
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+li {
+    border: black 3px solid;
+    margin: 20px;
+    padding: 50px;
+    font-size: 30px;
+    transition: .5s ease-out;
+}
+
+li:hover {
+    border: black 3px solid;
+    margin: 20px;
+    padding: 50px;
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    
+}
+
+ul {
+    list-style-type: none;
+}
+
+select {
+    margin: 10px;
+}
+
+input, select {
+    border-radius: 10px;
+}
+
+input.weather-form {
+    width: 75px;
+}
+
+input.weather-form:focus{
+    outline: solid black 1px;
+}
+
+input.weather-form:focus {
+    font-weight: bold;
+}
+
+.dropdown-content {
+    background-color: black;
+    position: fixed;
+    min-width: 160px;
+    padding: 50px 0px 0px 0px;
+    z-index: 2;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    height: 0;
+    top: 0;
+    transition: height 2s;
+}
+
+.dropdown:hover .dropdown-content {
+    height: 300px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: height 2s;
+    transition-delay: 100ms;
+}
+
+.dropdown:hover #main {
+    letter-spacing: 3px;
+}
+
+.opt {
+    opacity: 0;
+    transition: opacity 2s, transform 1s, height 4s, padding 5s;
+    height: 0;
+    padding: 0;
+}
+
+.dropdown:hover .opt {
+    opacity: 100;
+    height: 20px;
+    padding: 14px;
+    transition: opacity 2s, transform 1s, height 0s, padding 3s;
+}
+
+.dropdown {
+    padding: 0;
+    margin: 0 auto;
+}
+
+.weather:target {
+    transition: color 1.5s, font-size 1.5s;
+    font-size: 110px;
+    color: red;
+}
+
+span {
+    margin: 10px 0 0 0;
+}
+
+#find-me {
+    border: none;
+    background-color: transparent;
+}
+
+#find-me:hover {
+    border: solid 2px black;   
+    border-radius: 6px;
+}
+
+.transparent {
+    background-color: transparent;
+}
+
+.background {
+    width: auto;
+    height: 150%;
+}
+
+#zoom {
+    animation-name: zoom;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+h4 {
+    color: black;
+    margin: 15px;
+}
+
+h5 {
+    color: black;
+    font-weight: normal;
+    margin: 10px;
+    text-transform: none;
+}
+
+.store {
+    background-color: transparent;
+    margin: 2px;
+    padding: 2px;
+    width: 300px;
+}
+
+.item {
+    width: 120px;
+    margin: 2px;
+}
+
+button:hover {
+    background-color: lightgray;
+    color: black;
+}
+
+button:disabled {
+    background-color: gray;
+    color: darkgray;
+}
+
+.pressed {
+    background-color: gray;
+    outline: 2px solid black
+}
+
+.pressed:hover {
+    background-color: gray;
+}
+
+button:active {
+    background-color: white;
+}
+
+#goal {
+    padding: 2px;
+    color:black;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin: 0;
+}
+
+.grid2 {
+    display: grid;
+    margin: 0;
+    grid-auto-flow: column;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.fill {
+    padding: 162px 110px;
+    background-size: auto 100%;
+    background-blend-mode: multiply;
+    color:white;
+}
+  
+#results span {
+    font-weight: bold;
+}
+
+#Gryffindor {
+    background-image: url("img/gryffindor.jpg");
+    position:relative;
+}
+
+#Slytherin {
+    background-image: url("img/slytherin.jpg");
+}
+
+#Ravenclaw {
+    background-image: url("img/ravenclaw.jpg");
+}
+
+#Hufflepuff {
+    background-image: url("img/hufflepuff.jpg");
+}
+
+.Gryffindor {
+    color: #cd373c;
+}
+
+.Slytherin {
+    color: #175c2f;
+}
+
+.Hufflepuff {
+    color: #ecb939;
+}
+
+.Ravenclaw {
+    color: #1a317d;
+}
+
+@keyframes spin {
+  0%   {transform:rotateY(-180deg)}
+  100%  {transform:rotateY(-360deg)}
+}
+
+@keyframes zoom {
+  50%  {transform: scale(1.2)}
+  100%   {transform: scale(1)}
+}
+
+.houseadd {
+    padding: 5px;
+}
+
+.left_align {
+    margin: 0;
+    text-align: left;
+}
+
+.svg_container {
+    margin: auto;
+    padding: 0;
+}
+
+.svg_container svg path {
+    fill : black;
+    stroke: white;
+    stroke-width: 1;
+}
+
+.svg_container svg path:hover {
+  fill:none;
+  stroke:black;
+  pointer-events:all;
+  cursor: pointer;
+}   
+
+.svg_disp {
+    padding:30px;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+.svg_disp:hover {
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+.svg_disp1 path {
+    stroke: black;
+    stroke-width:2;
+}
+
+
+.svg_disp1:hover path{
+    fill:red;
+    stroke:red;
+}
+
+.svg_disp2 path {
+    stroke: black;
+    stroke-width:2;
+}
+
+.svg_disp2:hover path {
+    fill:orange;
+    stroke:orange;
+}
+
+#gamepanel {
+    color: black;
+    width: 200px;
+    margin: auto;
+}
+
+#question {
+    font-size: 20px;
+    padding: 10px;
+    width: auto;
+    text-align: center;
+    border: 1px black solid;
+    text-transform: none;
+    border-radius: 4px;
+    margin:5px;
+}
+
+#numb {
+    font-size: 20px;
+}

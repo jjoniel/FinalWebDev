@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hogwarts Houses</title>
+        <link href="./style.css" rel="stylesheet">
+        <link rel="icon" href="img/logo.png">
+    </head>
+
+    <body>
+        <h6><a href="./">HOUSE POINTS</a></h6>
+        <br><br>
+        <div id="results">
+            <div class="grid">
+                {{#each results}}
+                <div class="fill" id={{this.house}}>
+                    <span>{{this.house}}</span>
+                    <div>{{this.pts}}</div>    
+                </div>
+                 {{/each}}
+            </div>
+        </div>
+        <div><p><a class="login" href="./hogwarts/login">Login</a> for full access</p></div>
+    </body>
+    
+    
+</html>

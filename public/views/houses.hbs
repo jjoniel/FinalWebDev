@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hogwarts Houses</title>
+        <link href="./style.css" rel="stylesheet">
+        <link rel="icon" href="img/logo.png">
+    </head>
+
+    <body>
+        <h6><a href="./">HOUSE POINTS</a></h6>
+        <br><br>
+        <input type="text" id="search_bar" style="font-size: 34px; border: none; display: none; margin: 0 auto; outline: none" placeholder="search" oninput='search()'>
+        <div id="results">
+            <div class="grid">
+                {{#each results}}
+                <div class="fill" id={{this.house}}>
+                    <span>{{this.house}}</span>
+                    <div>{{this.pts}}</div>    
+                </div>
+                 {{/each}}
+            </div>
+        </div>
+        <div style="position:absolute; top: 500px; padding: 0">
+            <br>
+            <table style="background-color: transparent; position: fixed; ">
+                <tr >
+                    <td style="background-color: transparent"><button onclick='viewAdds()' id="add_button" style="visibility:hidden" class="points_button">View Additions</button></td>
+                    <td style="background-color: transparent"><button onclick='viewDeds()' id="ded_button" style="visibility:hidden" class="points_button">View Deductions</button></td>
+                    <td style="background-color: transparent"><button onclick='showLog()' id="change_button" class="points_button">View Log</button></td>
+                    <td style="background-color: transparent"><button onclick='prev()' id="prev_button" style="visibility:hidden" class="points_button">Previous 12</button></td>
+                    <td style="background-color: transparent"><button onclick='next()' id="next_button" style="visibility:hidden" class="points_button">Next 12</button></td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <table class="houseadd" style="position: fixed;">
+                <tr>
+                    <td>
+                        <label id='output'></label><input type='range' id='number' min=5 max=100 step=5 value=50>
+                    </td>
+                    <td>POINTS</td>
+                    <td>
+                        <select id="plusminus">
+                    	    <option value='plus'>to</option>
+                    	    <option value='minus'>from</option>
+                    	</select>
+                    </td>
+                    <td>
+                        <select id="name">
+                            {{#each students}}
+                    	    <option value="{{this.name}}">{{this.name}}</option>
+                    	    {{/each}}
+                    	</select>
+            	    </td>
+            	    <td>
+            	        <button onclick='changePoints()' class="points_button">Submit</button>
+            	    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+        <script type="text/javascript">
+                var slider = document.getElementById("number");
+                var output = document.getElementById("output");
+                output.innerHTML = slider.value;
+                slider.oninput = function() {
+                  output.innerHTML = this.value;
+                };
+        </script>
+        <script type="text/javascript">
+            function showLog(){
+                change = document.getElementById("change_button");
+                change.onclick = viewPoints;
+                change.innerHTML = "View Points";
+                add = document.getElementById("add_button");
+                add.style.visibility = "visible";
+                add.onclick = viewAdds;
+                add.classList.remove("pressed");
+                ded = document.getElementById("ded_button");
+                ded.style.visibility = "visible";
+                ded.classList.remove("pressed");
+                ded.onclick = viewDeds;
+                nex = document.getElementById("next_button");
+                nex.style.visibility = "visible";;
+                pre = document.getElementById("prev_button");
+                pre.style.visibility = "visible";
+                s = document.getElementById("search_bar")
+                s.style.display = "block";
+                q = s.value;
+                document.getElementById('results').style.visibility = "hidden";
+                var ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                };
+                // run AJAX function 
+                $.ajax( ajax_params );
+            };
+            
+            function viewPoints() {
+                change = document.getElementById("change_button");
+                change.onclick = showLog;
+                change.innerHTML = "View Log";
+                add = document.getElementById("add_button");
+                add.style.visibility = "hidden";
+                add.onclick = viewAdds;
+                add.classList.remove("pressed");
+                ded = document.getElementById("ded_button");
+                ded.style.visibility = "hidden";
+                ded.classList.remove("pressed");
+                ded.onclick = viewDeds;
+                nex = document.getElementById("next_button");
+                nex.style.visibility = "hidden";
+                pre = document.getElementById("prev_button");
+                pre.style.visibility = "hidden";
+                s = document.getElementById("search_bar")
+                s.style.display = "none";
+                document.getElementById('results').style.visibility = "hidden";
+                var ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts_worker`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                };
+                // run AJAX function 
+                $.ajax( ajax_params );
+            };
+            
+            function search() {
+                s = document.getElementById("search_bar")
+                q = s.value;
+                add = document.getElementById("add_button");
+                ded = document.getElementById("ded_button");
+                if(add.classList.contains("pressed"))
+                {
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?add=true&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };    
+                }
+                else if(ded.classList.contains("pressed")){
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?add=false&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };  
+                }
+                else {
+                     var ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };
+                }
+                // run AJAX function 
+                $.ajax( ajax_params );    
+            };
+            
+            function viewAdds() {
+                s = document.getElementById("search_bar")
+                q = s.value;
+                add = document.getElementById("add_button");
+                add.classList.add("pressed");
+                add.onclick = showLog;
+                ded = document.getElementById("ded_button");
+                ded.classList.remove("pressed");
+                var ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?add=true&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                };
+                // run AJAX function 
+                $.ajax( ajax_params );
+            };
+            
+            function viewDeds() {
+                s = document.getElementById("search_bar")
+                q = s.value;
+                ded = document.getElementById("ded_button");
+                ded.classList.add("pressed");
+                ded.onclick = showLog;
+                add = document.getElementById("add_button");
+                add.classList.remove("pressed");
+                var ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?add=false&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                };
+                // run AJAX function 
+                $.ajax( ajax_params );
+            };
+            
+            function next() {
+                s = document.getElementById("search_bar")
+                q = s.value;
+                add = document.getElementById("add_button");
+                ded = document.getElementById("ded_button");
+                var ajax_params = {};
+                if(add.classList.contains("pressed"))
+                {
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?next=true&add=true&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };    
+                }
+                else if(ded.classList.contains("pressed"))
+                {
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwart/log?next=true&add=false&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };    
+                }
+                else
+                {
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?next=true&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };       
+                }
+                // run AJAX function 
+                $.ajax( ajax_params );
+            };
+            
+            function prev() {
+                s = document.getElementById("search_bar")
+                q = s.value;
+                add = document.getElementById("add_button");
+                ded = document.getElementById("ded_button");
+                var ajax_params = {}
+                if(add.classList.contains("pressed"))
+                {
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?prev=true&add=true&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };    
+                }
+                else if(ded.classList.contains("pressed"))
+                {
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwart/log?prev=true&add=false&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    };   
+                }
+                else
+                {
+                    ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts/log?prev=true&search=${q}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                    }  ;    
+                }
+                // run AJAX function 
+                $.ajax( ajax_params );
+            };
+            
+            function changePoints() {
+                change = document.getElementById("change_button");
+                change.onclick = showLog;
+                change.innerHTML = "View Log";
+                add = document.getElementById("add_button");
+                add.style.visibility = "hidden";
+                add.onclick = viewAdds;
+                add.classList.remove("pressed");
+                ded = document.getElementById("ded_button");
+                ded.style.visibility = "hidden";
+                ded.classList.remove("pressed");
+                ded.onclick = viewDeds;
+                nex = document.getElementById("next_button");
+                nex.style.visibility = "hidden";
+                pre = document.getElementById("prev_button");
+                pre.style.visibility = "hidden";
+                s = document.getElementById("search_bar")
+                s.style.display = "none";
+                points = document.getElementById("number").value;
+                givetake = document.getElementById("plusminus").value;
+                name = document.getElementById("name").value;
+                name = name.replace(' ', '%20');
+                if(!(change.innerHTML == "View Log"))
+                {
+                    document.getElementById('results').style.visibility = "hidden";
+                }
+                var ajax_params = {
+                    'url'     : `https://user.tjhsst.edu/2022jjerome/hogwarts_worker?points=${points}&givetake=${givetake}&name=${name}`,
+                    'type'    : "get",
+                    'success' : onServerResponse    // the name of the callback function to call
+                };
+                // run AJAX function 
+                $.ajax( ajax_params );
+            };
+            
+            function onServerResponse(responseString){
+                console.log(responseString);
+                document.getElementById('results').innerHTML = responseString;
+                document.getElementById('results').style.visibility = "visible";
+            }
+        </script>
+    </body>
+    
+    
+</html>

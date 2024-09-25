@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome!</title>
+        <link href="./style.css" rel="stylesheet">
+        <link rel="icon" href="img/logo.png">
+    </head>
+    <body class="example" style="background-color:white;" >
+        <div class="dropdown">
+            <table class="menu">
+                <tr>
+                    {{#if login}}
+                    <td class="title"><a href="./profile">Hello {{user}}</a></td>
+                    {{else}}
+                    <td class="title">Not Signed In</td>
+                    {{/if}}
+                    <td class="title" id="main">Directory</td>
+                    {{#if login}}
+                    <td class="title"><a href="./logout">Logout</a></td>
+                    {{else}}
+                    <td class="title"><a href="{{link}}">Login</a></td>
+                    {{/if}}
+                </tr>
+            </table>
+            <div class="dropdown-content">
+                <div class="opt"><a href="./map">Interactive Maps</a><br></div>
+                <div class="opt"><a href="./hogwarts">Hogwarts Houses</a><br></div>
+                <div class="opt"><a href="./cookie/login">Cookie Clicker</a><br></div>
+                <div class="opt"><a href="./vote">Color Vote</a></div>
+                <div class="opt"><a href="./getweather">Weather Forecast</a></div>
+                <div class="opt"><a href="./numfacts">Number Facts</a></div><br>
+            </div>
+        </div>
+        <div class="directory"><a class="directory" href="./map">Interactive Maps</a><br></div>
+        <div class="directory"><a class="directory" href="./hogwarts">Hogwarts Houses</a><br></div>
+        <div class="directory"><a class="directory" href="./cookie/login">Cookie Clicker</a><br></div>
+        <div class="directory"><a class="directory" href="./vote">Color Vote</a></div>
+        <div class="directory"><a class="directory" href="./getweather">Weather Forecast</a></div>
+        <div class="directory"><a class="directory" href="./numfacts">Number Facts</a></div><br>
+        <span style="position: fixed; top:94vh; left: 0.5vw;">Visits: {{visits.count}}</span>
+    </body> 
+</html>

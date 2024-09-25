@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cookie Clicker Login</title>
+        <link href="../style.css" rel="stylesheet">
+        <link rel="icon" href="img/logo.png">
+    </head>
+    <body>
+        <h6><a href="../">Login</a></h6><br><br>
+        <div>
+            <form action="./login" method="get">
+                <label for="username">Username</label><br>
+                <input type="text" id="username" name="username" placeholder="Your Username"><br>
+                <button id="submit" type="submit" value="Submit">Submit</button>
+            </form>
+        </div>
+        <script>
+            function check() {
+                if(document.getElementById("username").value == "")
+                    document.getElementById("submit").disabled = true;
+                else{
+                    document.getElementById("submit").disabled = false;    
+                }
+            } 
+            setInterval(check, 5);
+        </script>
+    </body> 
+</html>

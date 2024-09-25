@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{city}}, {{state}} Weather</title>
+        <link href="./style.css" rel="stylesheet">
+        <link rel="icon" href="img/logo.png">
+    </head>
+    <body class="example">
+        <img class="background" {{#if zoom}} id="zoom" {{/if}} src="img/{{weather}}" width=1700 height=800 style="position: fixed; z-index: -5; left: 0; opacity: 60%">
+        <h6 class="transparent"><a href="./">HOURLY WEATHER</a></h6><br>
+        <h5 style="color:white; font-weight:10; padding: 11px 0px;">{{city}}, {{state}}</h5><br>
+        <table class="transparent">
+            <tr>
+                <td class="transparent"></td>
+                {{#each temp}}
+                    <td class="transparent"><a href="#{{@index}}">{{trimString @key 11 13}}</a></td>
+                {{/each}}
+                <td class="transparent"></td>
+            </tr>
+        </table>
+        <div class="outer-wrapper example transparent">
+            <div class="wrapper">
+                <table style="height: 500px;" class="transparent">
+                    <tr>
+                    {{#each temp}}
+                            <td class="weather" id="{{@index}}">{{this.t}}<br><span style="color:white; z-index:10;">{{trimString @key 11 13}}</span>
+                            <br><h5 style="white-space: nowrap; color: white; font-size: 15px">{{this.f}}</h5></td>
+                    {{/each}}
+                    <td class=transparent style="color:transparent">td</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<style type="text/css">
+                body {
+                    font-family:"Arial";
+                }
+    	        h1 {
+    	            color: blue;
+    	            text-align: center;
+    	        }
+    	        h2 {
+    	            color: orange;
+    	        }
+    	        a {
+    	            color: red;
+    	        }
+    	        div {
+    	            border-style: solid;
+    	            border-radius: 10px;
+    	            padding: 15px;
+    	            text-align: left;
+    	            margin: 0 auto;
+    	            width: 500px;
+    	        }
+        </style>
+    </head>
+    <body>
+    
+        <h1>MadLib Form</h1>
+        <div>
+        <form action="./madlib" method="get">
+        	<label for="id_name">What is your first name?</label><br>
+        	<input type="text" id="id_name" name="f_name" placeholder="Your Name"><br><br>
+        
+        	<label for="id_city">Where were you born?</label><br>
+        	<input type="text" id="id_city" name="f_birthplace" placeholder="City/Town"><br><br>
+        	<label for"id_color">What is your favorite color?</label><br>
+        	<select id="id_color" name="f_color">
+        	    <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="orange">Orange</option>
+        	</select><br><br>
+        	<label for="id_pet">Which of these animals is your favorite?</label><br>
+        	<select id="id_pet" name="f_pet">
+        	    <option value="cat">Cat</option>
+                <option value="dog">Dog</option>
+                <option value="hamster">Hamster</option>
+                <option value="chipmunk">Chipmunk</option>
+        	</select><br><br>
+        	<label>Choose the ones you like:</label><br>
+        	<input type="checkbox" id="car1" name="f_car" value="Lamborghini" checked>
+            <label for="car1">Lamborghini</label><br>
+            <input type="checkbox" id="car2" name="f_car" value="Porsche">
+            <label for="car2">Porsche</label><br>
+            <input type="checkbox" id="car3" name="f_car" value="Aston Martin">
+            <label for="car3">Aston Martin</label><br>
+            <input type="checkbox" id="car3" name="f_car" value="Maserati">
+            <label for="car3">Maserati</label><br>
+            <br>
+        	<button type="submit" value="Submit">Submit</button>
+        </form> 
+        </div>
+    
+    </body>
+</html>
